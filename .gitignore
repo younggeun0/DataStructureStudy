@@ -1,0 +1,10 @@
+
+# vscode 세팅 올리지 맙시다
+.vscode
+
+# eclipse 컴파일된 내용도 올리면 안돼요
+.classpath
+.project
+.settings/*
+
+
