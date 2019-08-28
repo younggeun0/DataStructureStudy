@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+/.metadata/
+=======
 
 # vscode 세팅 올리지 맙시다
 .vscode
@@ -8,3 +11,4 @@
 .settings/*
 
 
+>>>>>>> master
