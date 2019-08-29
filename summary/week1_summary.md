@@ -113,3 +113,189 @@ public class ReverseArray {
 	}
 }
 ```
+
+* **기수**
+  * 기수는 수를 나타내는 데 기초가 되는 수
+    * 10진법에서는 0에서 9까지의 정수를 말함(0~9)
+	* 8진수(0~7)
+	* 16진수(0~9 A~F)
+* **기수변환**이란 정숫값을 임의의 기수로 변환하는 것
+  * 10진수 정수를 r으로 나눈 나머지를 구하는 동시에 그 몫에 대해 나눗셈을 반복
+    * 이 과정을 몫이 0이 될 때까지 반복, 구한 나머지를 거꾸로 늘어 놓은 숫자가 기수 변환된 값
+
+```java
+public class CardConvRev {
+	static int cardConvR(int x, int r, char[] d) {
+		int digits = 0;
+		String dchar = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		
+		do {
+			d[digits++] = dchar.charAt(x % r);
+			x /= r;
+		} while(x != 0);
+		
+		return digits;
+	}
+	
+	public static void main(String[] args) {
+		
+		char[] d = new char[6];
+		int x = 59;
+		int r = 2;
+		
+		cardConvR(x, r, d);
+		
+		System.out.println(Arrays.toString(d)); // 110111
+	}
+}
+```
+
+* **소수 구하기**
+  * 소수는 자신과 1 이외의 정수로 나누어 떨어지지 않는 정수
+    * 즉, 2부터 n-1까지의 어떤 정수로도 나누어 떨어지지 않음
+
+```java
+public class PrimeNumber1 {
+	public static void main(String[] args) {
+		int counter = 0;
+		
+		for(int n=2; n<=1000; n++) {
+			int i;
+			for (i=2; i<n; i++) {
+				counter++;
+				if (n%i == 0) // 나누어 떨어지면 소수가 아님
+					break;
+			}
+			if (n==i) // i가 n-1까지 나누어 떨어지지 않으면 n값이 됨(마지막까지 나누어떨어지지 않음)
+				System.out.println(n); // n은 소수
+		}
+		System.out.println("나눗셈을 수행한 횟수 : "+counter); // 78022
+	}
+}
+```
+
+* **소수 구하는 알고리즘 개선1**
+  * 예를 들어 7이 소수인지는 7보다 작은 소수 2,3,5로 나눗셈을 하면 충분
+  * 구한 소수를 prime 배열에 저장, 임의의 수 n이 소수인지 판단하기 위해 쌓아둔 소수로 나눗셈을 진행
+
+```java
+public class PrimeNumber2 {
+	public static void main(String[] args) {
+		int counter = 0; // 나눈 횟수
+		int ptr = 0; // 찾은 소수의 개수
+		int[] prime = new int[500]; // 소수를 저장하는 배열
+		
+		prime[ptr++] = 2; // 2는 소수
+		
+		for(int n=3; n<=1000; n+=2) { // 홀수만 대상
+			int i;
+			for(i =1; i<ptr; i++) {
+				counter++;
+				if(n%prime[i] == 0) { // 찾은 소수와 비교
+					break;
+				}
+			}
+			if (ptr == i) { // 마지막까지 나눠떨어지지 않으면 
+				prime[ptr++] = n; // 소수이므로 배열에 저장, 반복
+			}
+		}
+		
+		for(int i=0; i<ptr; i++) {
+			System.out.println(prime[i]); // 찾은 소수 출력
+		}
+		System.out.println("나눗셈을 수행한 수 : " + counter); // 14622
+	}
+}
+```
+
+* 소수 구하는 알고리즘의 개선으로 알 수 있는 점
+  * **같은 답을 얻는 알고리즘은 하나가 아님**
+  * **빠른 알고리즘은 메모리를 많이 요구함**
+* **소수 구하는 알고리즘 개선2**
+  * 어떤 정수 n은 n의 제곱근 이하의 어떤 소수로도 나누어떨어지지 않는다면 소수라는 점을 이용
+  * 
+
+```java
+public class PrimeNumber3 {
+	public static void main(String[] args) {
+		int counter = 0; // 곱셈과 나눗셈 횟수
+		int ptr = 0; // 찾은 소수의 개수
+		int[] prime = new int[500];
+		
+		prime[ptr++] = 2;
+		prime[ptr++] = 3; // 2와 3은 소수
+		
+		for (int n=5; n<=1000; n += 2) { // 대상은 홀수만
+			boolean flag = false;
+			for(int i=1; prime[i]*prime[i] <= n; i++) { // 소수의제곱 보다 작을 값만 확인
+				counter += 2; // 곱하고 나누니까 2씩 더함
+				if (n % prime[i] == 0) { // 나눠 떨어지면 소수가 아님
+					flag = true;
+					break;
+				}
+			}
+			if (!flag) { // 마지막까지 나눠떨어지지 않음
+				prime[ptr++] = n; // 소수는 배열에 저장
+				counter++;
+			}
+		}
+		
+		for(int i=0; i<ptr; i++) {
+			System.out.println(prime[i]);
+		}
+		
+		System.out.println("곱셈과 나눗셈 횟수 : "+counter); // 3774
+	}
+}
+```
+
+* **다차원 배열(Multi-Dimensional Array)**
+  * 배열을 구성요소로 하는 것이 2차원 배열, 2차원 배열을 구성 요소로 하는 것이 3차원 배열
+
+```java
+int[][] x = new int[2][4]; // 2차원 배열
+long[][][] y = new long[2][3][4]; // 3차원 배열
+```
+
+* **한 해 경과 일 수 계산 프로그램**
+
+```java
+public class DayOfYear {
+
+	static int[][] mdays = { // 각 달의 일수
+			{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, // 평년
+			{31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31} // 윤년
+	};
+	
+	// 윤년 구하는 함수
+	static int isLeap(int year) { // 윤년에 해당하는 조건들 참이면 윤년(1), 아니면 평년(0)
+		return (year %4 == 0 && year % 100 != 0 || year % 400 == 0) ? 1: 0;
+	}
+	
+	static int dayOfYear(int y, int m, int d) {
+		int days = d; // 일 수
+		
+		for(int i=1; i<m; i++) { // 1월~(m-1)월의 일수를 더함 
+			days += mdays[isLeap(y)][i-1]; // isLeap 윤년이면 1, 평년이면 0
+		}
+		return days;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int retry;
+		
+		do {
+			System.out.print("년 : "); int year = sc.nextInt();
+			System.out.print("월 : "); int month = sc.nextInt();
+			System.out.print("일 : "); int day = sc.nextInt();
+			
+			System.out.printf("그 해 %d일째 \n", dayOfYear(year, month, day));
+			
+			System.out.print("다시 ? (1:예/0:아니오) : ");
+			retry = sc.nextInt();
+		} while(retry == 1);
+	}
+}
+```
+
