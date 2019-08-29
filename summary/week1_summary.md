@@ -253,8 +253,8 @@ public class PrimeNumber3 {
   * 배열을 구성요소로 하는 것이 2차원 배열, 2차원 배열을 구성 요소로 하는 것이 3차원 배열
 
 ```java
-int[][] x = new int[2][4]; // 2차원 배열
-long[][][] y = new long[2][3][4]; // 3차원 배열
+int[][] x = new int[2][4]; 
+long[][][] y = new long[2][3][4];
 ```
 
 * **한 해 경과 일 수 계산 프로그램**
