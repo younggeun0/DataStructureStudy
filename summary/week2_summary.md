@@ -142,3 +142,125 @@ public class SeqSearchSen {
 * 검색에 실패할 경우는 log⌈(n+1)⌉회, 검색에 성공한 경우는 대략 log(n)-1회
 * ⌈  ⌉ 천장 메서드(ceiling function)를 나타내는 기호로, x보다 크거나 같으면서 가장 작은 정수 ex)⌈3.5⌉ = 4
  
+### **복잡도**
+- 복잡도
+1. 시간 복잡도(time complexity) : 실행에 필요한 시간을 평가한 것
+2. 공간 복잡도(space complexity) : 기억 영역과 파일 공간이 얼마나 필요한가를 평가한 것
+
+* **선형 검색의 시간 복잡도**
+
+|실행 횟수|복잡도|
+|---|---|
+|1|O(1)|
+|n/2|O(n)|
+
+* 복잡도를 계산하는 방법
+	* O(f(n)) + O(g(n)) = O(max(f(n)), g(n))
+
+* **이진 검색의 시간 복잡도**
+
+|실행 횟수|복잡도|
+|---|---|
+|1|O(1)|
+|log n|O(log n)|
+
+<------------복잡도와 증가율---------------><br/>
+<--1, log n, n, n log n, n^2, n^3, ,,, 2^n--><br/>
+
+### **Arrays.binarySearch에 의한 이진 검색**
+- java.util.Arrays 클래스의 binarySearch 메서드
+	- 장점1. 이진 검색 메서드를 직접 코딩할 필요가 없다.
+	- 장점2. 모든 자료형 배열에서 검색할 수 있다.
+
+- 검색에 성공한 경우
+	- key와 일치하는 요소의 인덱스를 반환
+	- 여러 개 있다면 무작위의 인덱스를 반환
+
+- 검색에 실패한 경우
+	- 반환값은 삽입 포인트를 x라고 할 때 -x-1을 반환
+	- 삽입포인트: 검색하기 위해 지정한 key보다 큰 요소 중 첫 번째 요소의 인덱스
+	- 만약 배열의 모든 요소가 key보다 작다면 배열의 길이를 삽입 포인트로 정함
+	ex) key=4, 삽입포인트 : 3, 반환값 : -4
+
+* **기본 자료형 배열에서 binarySearch메서드로 검색하기**
+```JAVA
+public class BinarySearchTester {
+
+	public static void main(String[] args) {
+		Scanner stdIn = new Scanner(System.in);
+		
+		System.out.println("요솟수 : ");
+		int num = stdIn.nextInt();
+		int[] x = new int[num];
+		
+		System.out.println("오름차순으로 입력하세요.");
+		
+		System.out.print("x[0] : ");
+		x[0] = stdIn.nextInt();
+		
+		for (int i = 1; i < num; i++) {
+			do {
+				System.out.print("x[" + i + "]:");
+				x[i] = stdIn.nextInt();
+			}while (x[i] < x[i-1]);
+		}
+		
+		System.out.print("검색할 값:");
+		int ky = stdIn.nextInt();
+		
+		int idx = Arrays.binarySearch(x, ky);
+		
+		if (idx < 0)
+			System.out.println("그 값의 요소가 없습니다.");
+		else
+			System.out.println(ky + "은(는) x[" + idx + "]에 있습니다.");
+	}//main
+}//class
+```
+
+- JAVA 메서드의 종류
+	- 인스턴스 메서드(비정적 메서드): static을 붙이지 않고 선언한 메서드
+	- 클래스 메서드(정적 메서드): static을 붙여 선언한 메서드
+	- 인스턴스 메서드 호출 시 : 클래스형 변수 이름.메서드이름
+	- 클래스 메서드 호출 시 : 클래스이름.메서드이름
+
+* **객체의 배열에서 검색하기**
+1. static int binarySearch(Object[] a, Object key) <br/>
+: 자연 정렬이라는 방법으로 요소의 대소 관계를 판단. 정수배열, 문자열 배열에서 검색할 때 적당
+2. static <T> int binarySearch(T[] a, T key, Comparator<? super T> c) <br/>
+: 줄지어 있는 배열에서 검색하거나 "자연 순서"를 논리적으로 갖지 않는 클래스 배열에서 검색할 때 알맞음
+
+*A. 자연 정렬로 정렬된 배열에서 검색하기*
+```JAVA
+class StringBinarySearch {
+	public static void main(String[] args) {
+		Scanner stdIn = new Scanner(System.in);
+		
+		String[] x = {
+				"abstract",   "assert",       "boolean",   "break",      "byte",
+				"case",       "catch",        "char",      "class",      "const",
+				"continue",   "default",      "do",        "double",     "else",
+				"enum",       "extends",      "final",     "finally",    "float",
+				"for",        "goto",         "if",        "implements", "import",
+				"instanceof", "int",          "interface", "long",       "native",
+				"new",        "package",      "private",   "protected",  "public",
+				"return",     "short",        "static",    "strictfp",   "super",
+				"switch",     "synchronized", "this",      "throw",      "throws",
+				"transient",  "try",          "void",      "volatile",   "while"
+		};
+		
+		System.out.println("원하는 키워드를 입력하세요: ");
+		String ky = stdIn.next();
+		
+		int idx = Arrays.binarySearch(x, ky);
+		
+		if (idx < 0)
+			System.out.println("그 값의 요소가 없습니다.");
+		else
+			System.out.println(ky + "은(는) x[" + idx + "]에 있습니다.");
+	}//main
+
+}//class
+```
+
+- 자연 정렬(natural ordering) : 사람이 보기 자연스러운 방법으로 정렬 되는 것. binarySearch 메서드에 배열과 키 값을 전달하는 간단한 방법으로 검색할 수 있는 이유는 String 클래스가 Comparable<T> 인터페이스와 compareTo 메서드를 구현하고 있기 때문. 
