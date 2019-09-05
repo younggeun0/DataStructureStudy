@@ -264,3 +264,33 @@ class StringBinarySearch {
 ```
 
 - 자연 정렬(natural ordering) : 사람이 보기 자연스러운 방법으로 정렬 되는 것. binarySearch 메서드에 배열과 키 값을 전달하는 간단한 방법으로 검색할 수 있는 이유는 String 클래스가 Comparable<T> 인터페이스와 compareTo 메서드를 구현하고 있기 때문. 
+
+*B. 자연 정렬로 정렬되지 않은 배열에서 검색하기*
+- 제네릭 메서드로 하면 됨
+- 단, 배열의 요소가 어떤 순서로 줄지어 있는지 binarySearch 메서드에 알려줘야 함(매개변수 c에 comprator를 전달)
+- 1. java.util.Comparator 인터페이스
+```JAVA
+package java.util;
+
+public interface Comparator <T> {
+	int compare(T o1, T o2);
+	boolean equals(Object obj);
+}
+```
+- 2. Comparator 직접 구현
+```JAVA
+public int compare(T d1, T d2){
+	if(d1 > d2) return 양수;
+	if(d1 < d2) return 음수;
+	if(d1 == d2) return 0;
+}
+```
+***제네릭***
+- class/interface 클래스이름/인터페이스이름 <파라미터> {/*...*/}
+- class/interface 클래스이름/인터페이스이름 <파라미터1, 파라미터2, ... > {/*...*/}
+- 파라미터의 이름을 작성하는 방법
+	1. 1개의 대문자를 사용(소문자는 가급적 사용하지 않음)
+	2. 컬렉션(collection)의 자료형은 element의 앞글자인 E를 사용
+	3. 맵(Map)의 키(key), 값(value)은 key와 vlaue의 앞글자인 K와 V를 사용
+	4. 일반적으로는 T를 사용
+- 형 변수에 와일드 카드를 지정하는 것도 가능 ex) <? extneds T>
