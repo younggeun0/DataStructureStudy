@@ -9,7 +9,7 @@
   * 매주 다른 스터디원이 그 주에 해당하는 공부 내용을 정리하여 summary 디렉토리에 **Markdown파일**로 기록
 * **학습 내용**
   * [1주차 - 기본 알고리즘, 기본 자료구조](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week1_summary.md)
-  * 2주차 - 검색
+  * [2주차 - 검색](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week2_summary.md) 
   * 3주차 - 스택과 큐(1/2)
   * 4주차 - 스택과 큐(2/)
   * 5주차 - 재귀 알고리즘(1/2)
