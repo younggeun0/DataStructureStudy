@@ -289,8 +289,8 @@ public int compare(T d1, T d2){
 - class/interface 클래스이름/인터페이스이름 <파라미터> {/*...*/}
 - class/interface 클래스이름/인터페이스이름 <파라미터1, 파라미터2, ... > {/*...*/}
 - 파라미터의 이름을 작성하는 방법
-	1. 1개의 대문자를 사용(소문자는 가급적 사용하지 않음)
-	2. 컬렉션(collection)의 자료형은 element의 앞글자인 E를 사용
-	3. 맵(Map)의 키(key), 값(value)은 key와 vlaue의 앞글자인 K와 V를 사용
-	4. 일반적으로는 T를 사용
+> 1. 1개의 대문자를 사용(소문자는 가급적 사용하지 않음)
+> 2. 컬렉션(collection)의 자료형은 element의 앞글자인 E를 사용
+> 3. 맵(Map)의 키(key), 값(value)은 key와 vlaue의 앞글자인 K와 V를 사용
+> 4. 일반적으로는 T를 사용
 - 형 변수에 와일드 카드를 지정하는 것도 가능 ex) <? extneds T>
