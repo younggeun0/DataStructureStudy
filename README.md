@@ -16,7 +16,7 @@
   * 6주차 - 재귀 알고리즘(2/2) (by minj0i)
   * 7주차 - 정렬(1/2) (by sgmsgood)
   * 8주차 - 정렬(2/2) (by rlawjddbs)
-  * 9주차 - 집합 (by younggeun0)
+  * [9주차 - 집합 (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week9_summary.md)
   * 10주차 - 문자열 검색 (by minj0i)
   * 11주자 - 리스트(1/2) (by sgmsgood)
   * 12주차 - 리스트(2/2) (by rlawjddbs)
