@@ -66,7 +66,7 @@ class Solution {
 }
 ```
 
-###sgmsgood
+### sgmsgood
 ```java
 class Solution {
   public String solution(String s) {
