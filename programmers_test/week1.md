@@ -56,9 +56,9 @@ class Solution {
         if(s.length() > 0 && s.length() < 101) {
             int num = s.length() / 2;
             if(s.length() % 2 == 0) {
-                result = (s.substring(num-1, num+1));
+                result = s.substring(num-1, num+1);
             } else {
-                result = (s.substring(num, num+1));
+                result = s.substring(num, num+1);
             } // end else		
         } // end if
         return result;
