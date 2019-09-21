@@ -156,6 +156,37 @@ class Solution {
 ```
 
 ### rlawjddbs
+```Java
+class Solution {
+  public String solution(String[] seoul) {
+      int seoulLen = seoul.length;
+      int kimsIdx = 0;
+      boolean flag = true;
+      
+      if(seoulLen > 0 && seoulLen < 1001){
+        int itemsLen;  
+        for(int i=0; i < seoul.length; i++){
+            itemsLen = seoul[i].length(); 
+            if(!(itemsLen > 0 && itemsLen < 21)){
+                flag = false;
+            }
+        } // end for    
+        
+        if(flag){
+            for(int j=0; j < seoul.length; j++){
+                if("Kim".equals(seoul[j])){
+                    kimsIdx = j;
+                }           
+            }
+        } // end if
+        
+      }
+      
+      String answer = "김서방은 "+kimsIdx+"에 있다";    
+      return answer;
+  }
+}
+```
 
 ### sgmsgood
 ```java
