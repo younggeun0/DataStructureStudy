@@ -112,9 +112,9 @@ class Solution { // Java풀이
           }
       }
       
-      // 풀이2, 프로그래머스에서 동작은 안함
-      // int idx = java.util.Arrays.asList(seoul).indexOf("Kim");
-      // int idx = java.util.Arrays.binarySearch(seoul, "Kim");
+      // 풀이2, import java.util 하고 사용해야 함
+      // int idx = Arrays.asList(seoul).indexOf("Kim");
+      // int idx = Arrays.binarySearch(seoul, "Kim");
       
       answer = "김서방은 "+idx+"에 있다";
       
