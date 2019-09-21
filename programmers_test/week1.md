@@ -1,4 +1,4 @@
-## 프로그래머스 문제풀이 week1
+## 프로그래머스 문제풀이 1
 
 * [가운데 글자 가져오기](https://programmers.co.kr/learn/courses/30/lessons/12903)
 
@@ -96,6 +96,44 @@ class Solution {
 * [서울에서 김서방 찾기](https://programmers.co.kr/learn/courses/30/lessons/12919)
 
 ### younggeun0 
+
+```java
+class Solution {
+  public String solution(String[] seoul) {
+      String answer = "";
+      
+      // 풀이1
+      int idx = 0;
+      for(String name : seoul) {
+          if ("Kim".equals(name)) {
+              break;
+          } else {
+              idx++;
+          }
+      }
+      
+      // 풀이2, 프로그래머스에서 동작은 안함
+      // int idx = java.util.Arrays.asList(seoul).indexOf("Kim");
+      // int idx = java.util.Arrays.binarySearch(seoul, "Kim");
+      
+      answer = "김서방은 "+idx+"에 있다";
+      
+      return answer;
+  }
+}
+```
+
+```javascript
+function solution(seoul) {
+    var answer = '';
+    
+    var idx = seoul.indexOf('Kim');
+    
+    answer = "김서방은 "+idx+"에 있다";
+    
+    return answer;
+}
+```
 
 ### minj0i
 
