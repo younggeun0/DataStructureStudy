@@ -164,7 +164,7 @@ public class SeqSearchSen {
 |1|O(1)|
 |log n|O(log n)|
 
-![BigO](https://www.google.com/search?biw=1920&bih=969&tbm=isch&sa=1&ei=E4OFXaCZDcPpmAWS-I_wDw&q=%EB%B9%85%EC%98%A4+%EB%B3%B5%EC%9E%A1%EB%8F%84&oq=%EB%B9%85%EC%98%A4+%EB%B3%B5%EC%9E%A1%EB%8F%84&gs_l=img.3...30177.30997..31216...0.0..0.116.745.1j6......0....1..gws-wiz-img.......0j0i24j0i7i30.8TAuHpGhb9E&ved=0ahUKEwjg7q_a5-DkAhXDNKYKHRL8A_4Q4dUDCAc&uact=5#imgrc=Hgs6atR2RZC0hM:)
+![BigO](https://image.slidesharecdn.com/random-130302184603-phpapp02/95/-8-638.jpg?cb=1410677317)
 
 <------------복잡도와 증가율---------------><br/>
 <--1, log n, n, n log n, n^2, n^3, ,,, 2^n--><br/>
