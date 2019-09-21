@@ -112,7 +112,7 @@ class Solution { // Java풀이
           }
       }
       
-      // 풀이2, import java.util 하고 사용해야 함
+      // 풀이2, import java.util.Arrays; 하고 사용해야 함
       // int idx = Arrays.asList(seoul).indexOf("Kim");
       // int idx = Arrays.binarySearch(seoul, "Kim");
       
