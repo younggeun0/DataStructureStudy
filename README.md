@@ -11,7 +11,7 @@
   * **모였을 때**
     * 요약본 개인 복습(30분)
     * 프로그래머스 풀이 코드리뷰
-    * 관련 토픽 토이 프로그램 작성
+    * 관련  토이 프로그램 작성
 * **학습 내용**
   * [1주차 - 기본 알고리즘, 기본 자료구조 (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week1_summary.md)
   * [2주차 - 검색 (by minj0i)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week2_summary.md) 
