@@ -65,3 +65,25 @@ class Solution {
     }
 }
 ```
+
+###sgmsgood
+```java
+class Solution {
+  public String solution(String s) {
+      String answer = "";
+      int letterPosition = 0;
+      char a;
+      
+      letterPosition = (s.length() / 2);
+      
+      if(s.length() %2 == 1){
+          a = s.charAt(letterPosition);
+          answer = String.valueOf(a);
+      }else{
+          answer = s.substring(letterPosition-1, letterPosition+1);
+      }
+      
+      return answer;
+  }
+}
+```
