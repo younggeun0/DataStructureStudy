@@ -98,7 +98,7 @@ class Solution {
 ### younggeun0 
 
 ```java
-class Solution {
+class Solution { // Java풀이
   public String solution(String[] seoul) {
       String answer = "";
       
@@ -124,7 +124,7 @@ class Solution {
 ```
 
 ```javascript
-function solution(seoul) {
+function solution(seoul) { // JavaScript 풀이
     var answer = '';
     
     var idx = seoul.indexOf('Kim');
