@@ -142,12 +142,11 @@ class Solution {
       String answer = "";
       int i = 0;
       int length = seoul.length;
-		
-		while(i<length) {
-			if(seoul[i].equals("Kim")) {
-				answer = "김서방은 "+i+"에 있다";
-                break;
-            }
+	while(i<length) {
+		if(seoul[i].equals("Kim")) {
+			answer = "김서방은 "+i+"에 있다";
+                	break;
+            	}
 			i++;
 		}
       return answer;
