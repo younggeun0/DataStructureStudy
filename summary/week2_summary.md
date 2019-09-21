@@ -164,6 +164,8 @@ public class SeqSearchSen {
 |1|O(1)|
 |log n|O(log n)|
 
+![BigO](https://image.slidesharecdn.com/random-130302184603-phpapp02/95/-8-638.jpg?cb=1410677317)
+
 <------------복잡도와 증가율---------------><br/>
 <--1, log n, n, n log n, n^2, n^3, ,,, 2^n--><br/>
 
