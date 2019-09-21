@@ -25,3 +25,24 @@ function solution(s) {
     return answer;
 }
 ```
+
+### minj0i
+```JAVA
+class Solution {
+  public String solution(String s) {
+      String answer = "";
+      int solutionlength = s.length();
+      int middle = (solutionlength/2);
+      
+      if(solutionlength >= 1 && solutionlength < 101) {
+          if(solutionlength % 2 == 1){
+             answer =  s.substring(middle ,middle+1);    
+          } else {
+              answer = s.substring(middle-1, middle+1);
+          }
+          return answer;
+        }
+      return "제한사항 에러";
+  }//solution
+}//class
+```
