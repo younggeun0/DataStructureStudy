@@ -136,6 +136,24 @@ function solution(seoul) { // JavaScript 풀이
 ```
 
 ### minj0i
+```JAVA
+class Solution {
+  public String solution(String[] seoul) {
+      String answer = "";
+      int i = 0;
+      int length = seoul.length;
+		
+		while(i<length) {
+			if(seoul[i].equals("Kim")) {
+				answer = "김서방은 "+i+"에 있다";
+                break;
+            }
+			i++;
+		}
+      return answer;
+  }
+}
+```
 
 ### rlawjddbs
 
