@@ -76,7 +76,7 @@ static int kmpMatch(String txt, String pattern) {
 	int pPattern = 0; // 패턴 커서
 	int[] skip = new int[pattern.length() + 1]; // 건너뛰기 표
 	
-	// 건너뛰기 표 만들기
+	// 건너뛰기 표 만들기 //////////
 	skip[pText] = 0;
 	while(pText != pattern.length()) {
 		if (pattern.charAt(pText) == pattern.charAt(pPattern))
@@ -86,8 +86,9 @@ static int kmpMatch(String txt, String pattern) {
 		else
 			pPattern = skip[pPattern];
 	} 
+    ////////////////////////////////
 	
-	// 검색
+	// 검색 ////////////////////////
 	pText = pPattern = 0;
 	while (pText != txt.length() && pPattern != pattern.length()) {
 		if (txt.charAt(pText) == pattern.charAt(pPattern)) {
@@ -99,6 +100,7 @@ static int kmpMatch(String txt, String pattern) {
 			pPattern = skip[pPattern];
 		}
 	}
+    ////////////////////////////////
 	
 	if (pPattern == pattern.length()) // pText - pPattern을 반환
 		return pText - pPattern;
