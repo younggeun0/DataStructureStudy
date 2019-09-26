@@ -110,3 +110,50 @@ static int kmpMatch(String txt, String pattern) {
 
 
 ## 3. Boyer-Moore
+
+* Brute-Force를 개선한 KMP보다 효율이 더 우수하여 실제 문자열 검색에 널리 사용하는 알고리즘
+* R.S Boyer와 J.S.Moore가 만들어서 Boyer-Moore법이라 불림
+* 패턴의 마지막 문자부터 앞쪽으로 검사를 진행하면서 일치하지 않는 문자가 있으면 미리 준비한 표에 따라 패턴을 옮길 크기를 정함
+  * **텍스트안에서 패턴이 들어 있지 않으면 패턴의 길이만큼 건너 뜀**
+* Boyer-Moore 알고리즘도 각각의 문자를 만났을 때 패턴을 옮길 크기를 저장할 표(건너뛰기 표)를 미리 만듦
+* 패턴에 들어 있지 않은 문자를 만난 경우, 패턴을 옮길 크기는 n
+* 패턴에 들어 있는 문자를 만난 경우, 마지막에 나오는 위치의 인덱스가 k이면 패턴을 옮길 크기는 n-k-1
+  * 같은 문자가 패턴 안에서 중복해서 들어 있지 않다면 패턴을 옮길 크기는 n
+* 아래는 하나의 배열만 사용해서 검사하는 Boyer-Moore 알고리즘(원래 두개의 배열로 문자열을 검사)
+
+```java
+static int bmMatch(String txt, String pattern) {
+	int pText; 		// txt 커서
+	int pPattern;	// pattern 커서
+	int txtLength = txt.length();
+	int patternLength = pattern.length();
+	
+	int[] skip = new int[Character.MAX_VALUE+1]; // 건너뛰기 표
+	
+	// 건너뛰기 표 생성
+	for(pText = 0; pText <= Character.MAX_VALUE; pText++) {
+		skip[pText] = patternLength;
+	}
+	
+	for(pText = 0; pText < patternLength-1; pText++) {
+		skip[pattern.charAt(pText)] = patternLength - pText - 1; // pText == patternLength - 1
+	}
+	
+	// 검색
+	while(pText < txtLength) {
+		pPattern = patternLength - 1; // pattern의 끝 문자에 주목
+		
+		while (txt.charAt(pText) == pattern.charAt(pPattern)) {
+			if (pPattern == 0) {
+				return pText; // 검색 성공
+			}
+			
+			pPattern--;
+			pText--;
+		}
+		pText = (skip[txt.charAt(pText)] > patternLength - pPattern) ?
+				skip[txt.charAt(pText)] : patternLength - pPattern;
+	}
+	return -1;
+}
+```
