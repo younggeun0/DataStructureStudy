@@ -39,7 +39,7 @@ public class Hanoi {
 > 1. 바닥 원반을 제외한 그룹(원반[1]~원반[no-1])을 시작 기둥에서 중간 기둥으로 옮김
 > 2. 바닥 원반 no을 시작 기둥에서 목표 기둥으로 옮겼음을 출력
 > 3. 바닥 원반을 제외한 그룹(원반[1]~원반[no-1])을 중간 기둥에서 목표 기둥으로 옮김
-
+![Hanoi](https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/cBY/image/A4BfDcwC2-9lpT5UO_Q0ThhC_-w.png)
 
 ## 8퀸 문제
 ### **8퀸 문제란?**
