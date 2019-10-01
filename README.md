@@ -18,7 +18,7 @@
   * [3주차 - 스택과 큐(1/2) (by sgmsgood)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week3_summary.md)
   * 4주차 - 스택과 큐(2/2) (by sgmsgood)
   * [5주차 - 재귀 알고리즘(1/2) (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week5_summary.md)
-  * 6주차 - 재귀 알고리즘(2/2) (by minj0i)
+  * [6주차 - 재귀 알고리즘(2/2) (by minj0i)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week6_summary.md)
   * 7주차 - 정렬(1/3) 버블, 선택, 삽입 정렬 (by younggeun0)
   * 8주차 - 정렬(2/3) 셀, 퀵정렬(by minj0i)
   * 9주차 - 정렬(3/3) 병합, 힙, 도수 정렬(by sgmsgood)
