@@ -62,7 +62,24 @@ function solution(n) {
 ### minj0i
 
 ```JAVA
-
+class Solution {
+  public String solution(int n) {
+    String answer = "";
+      String watermelon2 = "수박";
+      
+      int num = n / 2;
+      while(num == 1){
+            answer = answer + watermelon2;
+            num = num - 1;
+      }
+    if(n%2 == 0){
+        answer = answer+watermelon2+watermelon2;   
+    }else {
+        answer=answer+"수";
+    }
+      return answer;
+  }
+}
 ```
 
 ### sgmsgood
