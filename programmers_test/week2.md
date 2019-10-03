@@ -114,16 +114,16 @@ int k = n / 2;
 int f = n % 2;
 
     for (int a = 0; a < k; a++) {
-		for (int i = 0; i < water.length; i++) {
-			System.out.print(water[i]);
+ 	for (int i = 0; i < water.length; i++) {
+		System.out.print(water[i]);
             
-		}
 	}
+    }
 		
-	if (f != 0) {
-		System.out.print(water[0]);
+    if (f != 0) {
+	System.out.print(water[0]);
 
-	}
+    }
 ```
 
 ---
