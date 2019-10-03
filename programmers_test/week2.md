@@ -33,9 +33,9 @@ function solution(num) {
 ---
 
 * [수박수박수박수박수박수?](https://programmers.co.kr/learn/courses/30/lessons/12922)
-  * 이렇게 풀면 안돼요..
+  * 아래처럼 풀면 안돼요..
 
-![watermelon_bad]()
+![watermelon_bad](https://github.com/younggeun0/DataStructureStudy/blob/master/programmers_test/img/watermelon_bad.png)
 
 ### younggeun0 
 
