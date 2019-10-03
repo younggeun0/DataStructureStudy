@@ -116,3 +116,20 @@ function solution(arr) {
     return answer;
 }
 ```
+
+### minj0i
+```JAVA
+class Solution {
+  public double solution(int[] arr) {
+      double answer = 0;
+      int n = arr.length;
+      int i;
+      double sum = 0.0;
+      for(i=0; i<n; i++){
+          sum = sum + arr[i];
+      }
+      answer = sum/n;
+      return answer;
+  }
+}
+```
