@@ -37,7 +37,18 @@ class Solution {
 ### sgmsgood
 
 ```java
-
+class Solution {
+  public String solution(int num) {
+      String answer = "";
+      if(num%2 == 0){
+          answer = "Even";
+      }else {
+          answer = "Odd";
+      }
+      
+      return answer;
+  }
+}
 ```
 
 ---
@@ -94,7 +105,25 @@ class Solution {
 ### sgmsgood
 
 ```java
+String answer = "";
+int n = 5;
 
+String[] water = { "수", "박" };
+
+int k = n / 2;
+int f = n % 2;
+
+    for (int a = 0; a < k; a++) {
+		for (int i = 0; i < water.length; i++) {
+			System.out.print(water[i]);
+            
+		}
+	}
+		
+	if (f != 0) {
+		System.out.print(water[0]);
+
+	}
 ```
 
 ---
