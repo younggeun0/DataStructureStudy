@@ -102,5 +102,15 @@ class Solution {
 ### younggeun0 
 
 ```javascript
-
+function solution(arr) {
+    var answer = 0;
+    
+    arr.forEach(function(i){
+       answer +=  i;
+    });
+    
+    answer = answer/arr.length;
+    
+    return answer;
+}
 ```
