@@ -65,19 +65,18 @@ function solution(n) {
 class Solution {
   public String solution(int n) {
     String answer = "";
-      String watermelon2 = "수박";
+    String watermelon = "수박";
       
-      int num = n / 2;
-      while(num == 1){
-            answer = answer + watermelon2;
-            num = num - 1;
-      }
-    if(n%2 == 0){
-        answer = answer+watermelon2+watermelon2;   
-    }else {
-        answer=answer+"수";
+    int num = n / 2;
+    while(num > 0){
+        answer = answer + watermelon;
+        num = num - 1;
     }
-      return answer;
+    if(n % 2  == 0){
+        return answer;
+    }else{
+        return answer+"수";
+    }
   }
 }
 ```
