@@ -104,26 +104,29 @@ class Solution {
 
 ### sgmsgood
 
-```java
-String answer = "";
-int n = 5;
+```JAVA
+class Solution {
+  public String solution(int n) {
+        String answer = "";
+	String[] water = { "수", "박" };
 
-String[] water = { "수", "박" };
+   	 int checkEven = n / 2;
+    	int checkOdd = n % 2;
 
-int k = n / 2;
-int f = n % 2;
-
-    for (int a = 0; a < k; a++) {
- 	for (int i = 0; i < water.length; i++) {
-		System.out.print(water[i]);
-            
-	}
-    }
+    	for (int a = 0; a < checkEven; a++) {
+        	for (int i = 0; i < water.length; i++) {
+           		answer += water[i];
+        	}
+    	}
 		
-    if (f != 0) {
-	System.out.print(water[0]);
+    	if (checkOdd != 0) {
+		answer += water[0];
 
+    	}
+      
+    	return answer;
     }
+}
 ```
 
 ---
