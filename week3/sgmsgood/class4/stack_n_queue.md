@@ -165,6 +165,8 @@ public void dump() {
 
 ### 링 버퍼로 큐 만들기 : 
 * 배열의 처음과 끝이 연결되었다고 보는 자료 구조
+* '오래된 데이터를 버리는' 용도로 사용할 수 있음. 
+    * 요소의 개수가 n인 배열에 계속해서 데이터가 입력될 때 가장 최근에 들어온 데이터 n개만 저장하고 오래된 데이터는 버림
 
 ## **< 큐 클래스 IntQueue >**
 
@@ -325,4 +327,152 @@ public void dump() {
 	}
 }
 ```   
+```java
+public class IntQueue {
+	private int max;
+	private int front;
+	private int rear;
+	private int num;
+	private int[] que;
+	
+	public class EmptyIntQueueException extends RuntimeException {
+		private static final long serialVersionUID = 1L;
 
+		public EmptyIntQueueException() {}
+	}
+ 	
+	public class OverflowIntQueueException extends RuntimeException{
+		private static final long serialVersionUID = 1L;
+
+		public OverflowIntQueueException() {}
+	}
+	
+	public IntQueue(int capacity) {
+		num = front = rear = 0;
+		max = capacity;
+		try {
+			que = new int[max];
+		}catch(OutOfMemoryError e) {
+			max = 0;
+		}
+	}
+	
+	public int enque(int x) throws OverflowIntQueueException{
+		if(num >= max) {
+			throw new OverflowIntQueueException();
+		}
+		que[rear++] = x;
+		num++;
+		
+		if(rear == max) {
+			rear = 0;
+		}
+		return x;
+	}
+	
+	public int deque() throws EmptyIntQueueException{
+		if(num <= 0) {
+			throw new EmptyIntQueueException();
+		}
+		int x = que[front++];
+		num--;
+		
+		if(front == max) {
+			front = 0;
+		}
+		
+		return x;
+	}
+	
+    // 맨 앞의 데이터(디큐에서 꺼낼 데이터)를 '몰래 엿보는'메서드 
+    // 값을 조사만 하고 데이터를 꺼내지는 않으므로 값이 변화하지 않음.
+	public int peek() throws EmptyIntQueueException{
+		if(num <= 0) {
+			throw new EmptyIntQueueException();
+		}
+		return que[front];
+	}
+	
+    // 검색 메서드 (큐의 배열에서 x와 같은 데이터가 저장되어 있는 위치를 알아내는 메서드)
+	public int indexOf(int x) {
+		for(int i = 0; i < num; i++) {
+			int idx = (i + front) % max;
+			if(que[idx] == x) {
+				return idx;
+			}
+		}
+		return -1;
+	}
+	
+    // 삭제 메서드
+	public void clear() {
+		num = front = rear = 0;
+	}
+	
+    // 최대 용량 확인 메서드
+	public int capacity() {
+		return max;
+	}
+	
+    // 데이터 수를 확인하는 메서드
+	public int size() {
+		return num;
+	}
+	
+    // 큐가 비어 있는지 판단하는 메서드
+	public boolean isEmpty() {
+		return num <= 0;
+	}
+	
+    // 큐가 가득 찼는지 판단하는 메서드
+	public boolean isFull() {
+		return num >= max;
+	}
+	
+    // 모든 데잍를 출력하는 메서드
+	public void dump() {
+		if(num <= 0) {
+			System.out.println("큐가 비어 있습니다.");
+		}else{
+			for(int i = 0; i < num; i++) {
+				System.out.print(que[(i + front) % max] + " ");
+			}
+			System.out.println();
+		}
+	}
+}
+```
+
+
+```java
+public class LastNElements {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		final int N = 10;
+		
+		int[] a = new int[N];
+		int cnt = 0;
+		int retry;
+		
+		System.out.println("정수를 입력하세요.");
+		
+		do {
+			System.out.printf("%d번째 정수: ", cnt + 1);
+			a[cnt++ % N] = sc.nextInt();
+			
+			System.out.print("계속 할까요? (예.1/ 아니오.0): ");
+			retry = sc.nextInt();
+		}while(retry == 1);
+		
+		int i = cnt - N;
+		if(i < 0) {
+			i = 0;
+		}
+		
+		for( ; i < cnt ; i ++) {
+			System.out.printf("%2d 번째의 정수 = %d\n", i + 1, a[i % N]);
+		}
+		sc.close();
+	}
+}
+```

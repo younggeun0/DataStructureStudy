@@ -37,7 +37,18 @@ class Solution {
 ### sgmsgood
 
 ```java
-
+class Solution {
+  public String solution(int num) {
+      String answer = "";
+      if(num%2 == 0){
+          answer = "Even";
+      }else {
+          answer = "Odd";
+      }
+      
+      return answer;
+  }
+}
 ```
 
 ---
@@ -93,8 +104,29 @@ class Solution {
 
 ### sgmsgood
 
-```java
+```JAVA
+class Solution {
+  public String solution(int n) {
+        String answer = "";
+	String[] water = { "수", "박" };
 
+   	 int checkEven = n / 2;
+    	int checkOdd = n % 2;
+
+    	for (int a = 0; a < checkEven; a++) {
+        	for (int i = 0; i < water.length; i++) {
+           		answer += water[i];
+        	}
+    	}
+		
+    	if (checkOdd != 0) {
+		answer += water[0];
+
+    	}
+      
+    	return answer;
+    }
+}
 ```
 
 ---
@@ -114,5 +146,22 @@ function solution(arr) {
     answer = answer/arr.length;
     
     return answer;
+}
+```
+
+### minj0i
+```JAVA
+class Solution {
+  public double solution(int[] arr) {
+      double answer = 0;
+      int n = arr.length;
+      int i;
+      double sum = 0.0;
+      for(i=0; i<n; i++){
+          sum = sum + arr[i];
+      }
+      answer = sum/n;
+      return answer;
+  }
 }
 ```
