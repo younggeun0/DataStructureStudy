@@ -1,6 +1,6 @@
 # Week 10 
 
-## 1. Brute Force
+## 1. Brute Force 
 
 * **문자열 검색(String Searching)**은 어떤 문자열 안에 다른 문자열이 들어 있는지 조사하고 들어 있다면 그 위치를 찾아내는 것
 * **Brute Force법은 선형 검색을 확장한 알고리즘**
