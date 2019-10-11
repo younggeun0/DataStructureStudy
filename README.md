@@ -16,7 +16,7 @@
   * [1주차 - 기본 알고리즘, 기본 자료구조 (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week1_summary.md)
   * [2주차 - 검색 (by minj0i)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week2_summary.md) 
   * [3주차 - 스택과 큐(1/2) (by sgmsgood)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week3_summary.md)
-  * 4주차 - 스택과 큐(2/2) (by sgmsgood)
+  * [4주차 - 스택과 큐(2/2) (by sgmsgood)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week3_summary.md)
   * [5주차 - 재귀 알고리즘(1/2) (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week5_summary.md)
   * [6주차 - 재귀 알고리즘(2/2) (by minj0i)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week6_summary.md)
   * [7주차 - 정렬(1/3) 버블, 선택, 삽입 정렬 (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week7_summary.md)
