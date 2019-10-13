@@ -111,8 +111,7 @@ class Solution {
 
 ### younggeun0 
 
-* 아래 JS풀이인 경우 효율이 좋지 못하여 40/100점 나옴..
-  * Array.prototype.filter(), Math.max()를 사용하는 풀이법으로 해결가능(추가 예정)
+* 아래 JS풀이인 경우 효율이 좋지 못하여 40/100점 나온듯
 
 ```javascript
 function solution(answers) {
@@ -173,6 +172,47 @@ function solution(answers) {
         }
     } else { // 없으면 최고점자만 추가
         answer.push(maxCntIdx+1);
+    }
+    
+    return answer;
+}
+```
+
+* 온라인 풀이 참조하여 통과한 버전
+  * 비교연산 줄이고, for-in문 사용으로 좀 더 효율이 좋아 처리시간이 단축된게 통과된 요인인듯
+
+```javascript
+function solution(answers) {
+    var answer = [];
+    
+    // 학생들 패턴
+    var student = [
+        [1,2,3,4,5],
+        [2,1,2,3,2,4,2,5],
+        [3,3,1,1,2,2,4,4,5,5]
+    ];
+    
+    var studentCnt = [0, 0, 0]; // 학생별 맞춘 문제 수
+    
+    for (var i in answers) { // for-in서 i는 인덱스
+        if (student[0][i%5] == answers[i]) { // 따로 idx변수를 두지않고 i를 나눈 나머지를 사용
+            studentCnt[0]++;
+        }
+        if (student[1][i%8] == answers[i]) {
+            studentCnt[1]++;
+        }
+        if (student[2][i%10] == answers[i]) {
+            studentCnt[2]++;
+        }
+    }
+    
+    // Math.max()사용, Spread Syntax로 배열값 넣어 최대값 구함
+    var max = Math.max(...studentCnt);
+    
+    for (var i in studentCnt) { // for-in에서 최고 정답수를 가질 때 정답에 추가
+        if (studentCnt[i] == max) {
+            answer.push(Number(i)+1);
+        }
     }
     
     return answer;
