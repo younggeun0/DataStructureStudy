@@ -98,7 +98,7 @@ static void set(int i) {
 - 문제를 세분하고 세분된 작은 문제의 풀이를 결합해 전체 문제를 풀이하는 기법을 분할 정복법(divide and conquer) <br/>
 - 문제를 세분할 때는 작은 문제의 풀이에서 원래 문제의 풀이가 쉽게 도출되도록 설계해야 함
 
-### **분기 한정법(divide and conquer)**
+### **분기 한정법(branching and bounding method)**
 > [규칙 2] 각 행에 퀸을 1개만 배치
 ```JAVA
 package chap05;
