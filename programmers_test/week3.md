@@ -118,7 +118,63 @@ class Solution {
 ### minj0i
 
 ```JAVA
-
+class Solution {
+    public int[] solution(int[] answers) {
+        int[] answer = {};
+        int[] answerA = {1, 2, 3, 4, 5};
+        int[] answerB = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] answerC = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+        
+        int cntA = 0, cntB = 0, cntC = 0;
+        
+        for (int i=0; i<answers.length; i++){
+            cntA = cntA + (answers[i] == answerA[i%5] ? 1 : 0);
+            cntB = cntB + (answers[i] == answerB[i%8] ? 1 : 0);
+            cntC = cntC + (answers[i] == answerC[i%10] ? 1: 0);
+        }
+        
+        if (cntA > cntB ){
+            if (cntA > cntC) {
+                answer = new int[1];
+                answer[0] = 1;
+            }else if (cntA < cntC) {
+                answer = new int[1];
+                answer[0] = 3;
+            }else {
+                answer = new int[2];
+                answer[0] = 1;
+                answer[1] = 3;
+            }
+        }else if (cntB > cntA){
+            if (cntB > cntC) {
+                answer = new int[1];
+                answer[0] = 2;
+            }else if (cntB < cntC) {
+                answer = new int[1];
+                answer[0] = 3;
+            }else {
+                answer = new int[2];
+                answer[0] = 2;
+                answer[1] = 3;
+            }
+        }else if (cntB == cntA) {
+            if (cntB > cntC) {
+                answer = new int[2];
+                answer[0] = 1;
+                answer[1] = 2;
+            }else if (cntB < cntC){
+                answer = new int[1];
+                answer[0] = 3;
+            }else {
+                answer = new int[3];
+                answer[0] = 1;
+                answer[1] = 2;
+                answer[2] = 3;
+            }
+        }
+        return answer;
+    }
+}
 ```
 
 ### sgmsgood
