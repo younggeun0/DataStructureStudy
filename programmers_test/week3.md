@@ -111,6 +111,9 @@ class Solution {
 
 ### younggeun0 
 
+* 아래 JS풀이인 경우 효율이 좋지 못하여 40/100점 나옴..
+  * Array.prototype.filter(), Math.max()를 사용하는 풀이법으로 해결가능(추가 예정)
+
 ```javascript
 function solution(answers) {
     var answer = [];
