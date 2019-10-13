@@ -112,7 +112,68 @@ class Solution {
 ### younggeun0 
 
 ```javascript
-
+function solution(answers) {
+    var answer = [];
+    
+    // 학생들 패턴
+    var student1 = [1,2,3,4,5];
+    var student2 = [2,1,2,3,2,4,2,5];
+    var student3 = [3,3,1,1,2,2,4,4,5,5];
+    
+    var studentIdx = [0, 0, 0]; // 탐색용 인덱스
+    var studentCnt = [0, 0, 0]; // 학생별 맞춘 문제 수
+    
+    var tmpAnswer; // 비교할 문제답
+    for(var i=0; i<answers.length; i++){
+        tmpAnswer = answers[i];
+        if (student1[studentIdx[0]++] == tmpAnswer) {
+            studentCnt[0]++;
+            studentIdx[0] = studentIdx[0] % student1.length;
+        }
+        
+        if (student2[studentIdx[1]++] == tmpAnswer) {
+            studentCnt[1]++;
+            studentIdx[1] = studentIdx[1] % student2.length;
+        }
+        
+        if (student3[studentIdx[2]++] == tmpAnswer) {
+            studentCnt[2]++;
+            studentIdx[2] = studentIdx[2] % student3.length;
+        }
+    }
+    
+    // 가장 많이 맞춘 학생구하기
+    // 1. 최고 정답 수 구하기
+    var maxCnt = 0;
+    var maxCntIdx = 0;
+    for (var i=0; i<studentCnt.length; i++){    
+        if (studentCnt[i] > maxCnt) {
+            maxCnt = studentCnt[i];
+            maxCntIdx = i;
+        }
+    }
+    
+    // 2.동일한 수를 맞춘 학생이 있는지 탐색
+    var sameScoreCnt = 0;
+    var sameScoreIdx = [];
+    for (var i=0; i<studentCnt.length; i++){
+        if (maxCnt == studentCnt[i]) {
+            sameScoreCnt++;
+            sameScoreIdx.push(i);
+        }
+    }
+    
+    // 3. 동일한 사람이 있으면 반복, 추가
+    if (sameScoreCnt > 1) {
+        for (var i=0; i<sameScoreIdx.length; i++){
+            answer.push(sameScoreIdx[i]+1);
+        }
+    } else { // 없으면 최고점자만 추가
+        answer.push(maxCntIdx+1);
+    }
+    
+    return answer;
+}
 ```
 
 ### minj0i
