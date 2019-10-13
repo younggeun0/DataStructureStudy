@@ -47,8 +47,19 @@ class Solution {
 ### younggeun0 
 
 ```javascript
-
-
+function solution(phone_number) {
+    var answer = '';
+    
+    var maskLength = phone_number.length-4;
+    
+    for(var i=0; i<maskLength; i++){
+        answer += "*";
+    }
+    
+    answer += phone_number.substring(maskLength);
+    
+    return answer;
+}
 ```
 
 ### minj0i
