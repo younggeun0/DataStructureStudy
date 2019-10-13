@@ -83,6 +83,23 @@ class Solution {
 ### sgmsgood
 
 ```JAVA
+class Solution {
+  public String solution(String phone_number) {
+      String answer = "";
+      String temp = "";
+      
+      int wordLength = phone_number.length();
+      
+            for(int j = 0; j < phone_number.length()-4; j++){
+                temp += "*";
+                
+            }
+      answer = phone_number.replace(phone_number.substring(0, wordLength-4),temp);
+      
+      
+      return answer;
+  }
+}
 
 ```
 
