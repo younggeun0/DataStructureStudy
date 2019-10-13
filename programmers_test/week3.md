@@ -5,7 +5,13 @@
 ### younggeun0
 
 ```javascript
-
+function solution(s) {
+    var answer = 0;
+    
+    answer = parseInt(s);
+    
+    return answer;
+}
 ```
 
 ### minj0i
