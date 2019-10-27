@@ -48,7 +48,16 @@ function solution(a, b) {
 ### sgmsgood
 
 ```java
+import java.util.Calendar;
 
+class Solution {
+  public String solution(int a, int b) {
+      String answer = "";
+      Calendar cal = Calendar.getInstance();
+      cal.set(2016,a-1, b);
+      answer = cal.getTime().toString().substring(0,3).toUpperCase();
+      return answer;
+  }
 }
 ```
 
