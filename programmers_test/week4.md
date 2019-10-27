@@ -42,119 +42,32 @@ function solution(a, b) {
 ### minj0i
 
 ```JAVA
+class Solution {
+  public String solution(int a, int b) {
+      String answer = "";
+      String[] answers = {"THU", "FRI","SAT", "SUN","MON","TUE","WED"};
+      int[] days = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30 };
+          
+      for ( int i = 0; i < a - 1; i++){
+          b = b + days[i];
+      }
+      
+      answer = answers[b%7];
+
+      return answer;
+  }
+}
+```
+```JAVA
 import java.util.Calendar;
 
 class Solution {
   public String solution(int a, int b) {
       String answer = "";
-      String[] answers = {"FRI","SAT", "SUN","MON","TUE","WED","THU"};
-      int day = 0;
-      
-      if ( a <= 12 && a >= 1) {
-          switch(a) {
-              case 1: {
-                  if (b > 31) {
-                      break;
-                  } else {
-                      day = b;
-                  }
-                  break;
-              }
-              case 2: {
-                if ( b > 29) {
-                      break;
-                  } else {
-                      day = b + 31;
-                  }
-                  break;
-              }
-              case 3: {
-                  if ( b > 31) {
-                      break;
-                  } else {
-                      day = b + 31  + 29;
-                  }
-                  break;
-              }
-              case 4: {
-                  if ( b > 30) {
-                      break;
-                  } else {
-                      day = b + 31  + 29 + 31;
-                  }
-                  break;
-              }
-              case 5:{
-                  if ( b > 31) {
-                      break;
-                  } else {
-                      day = b + 31 + 29 + 31 + 30;
-                  }
-                  break;
-              }
-              case 6: {
-                  if ( b > 30) {
-                      break;
-                  } else {
-                      day = b + 31 + 29 + 31 + 30 + 31;
-                  }
-                  break;
-              }
-              case 7: {
-                  if ( b > 31) {
-                      break;
-                  } else {
-                      day = b + 31 + 29 + 31 + 30 + 31 + 30 ; 
-                  }
-                  break;
-              } 
-              case 8: {
-                  if ( b > 31) {
-                      break;
-                  } else {
-                      day = b + 31 + 29 + 31 + 30 + 31 + 30 + 31 ;
-                  }
-                  break;
-              }
-              case 9:{
-                  if ( b > 30) {
-                      break;
-                  } else {
-                      day = b + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31;
-                  }
-                  break;
-              } 
-              case 10: {
-                  if ( b > 31) {
-                      break;
-                  } else {
-                      day = b + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30;
-                  }
-                  break;
-              }
-              case 11: {
-                  if ( b > 30) {
-                      break;
-                  } else {
-                      day = b + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;
-                  }
-                  break;
-              }
-              case 12: {
-                  if ( b > 31) {
-                      break;
-                  } else {
-                      day = b + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;
-                  }
-                  break;
-              }
-              default : break;
-          }
-        }
-      
-      int days = day%7;
-      answer = answers[days - 1];
-
+      String[] answers = { "SUN", "MON","TUE","WED", "THU", "FRI", "SAT"};
+      Calendar cal = Calendar.getInstance();
+      cal.set(2016,a-1, b);
+      answer = answers[cal.get(Calendar.DAY_OF_WEEK)-1];
       return answer;
   }
 }
