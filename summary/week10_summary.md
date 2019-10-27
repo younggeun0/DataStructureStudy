@@ -2,15 +2,15 @@
 
 ## 1. Brute Force 
 
-* **문자열 검색(String Searching)**은 어떤 문자열 안에 다른 문자열이 들어 있는지 조사하고 들어 있다면 그 위치를 찾아내는 것
+* **문자열 검색(String Searching)은 어떤 문자열 안에 다른 문자열이 들어 있는지 조사하고 들어 있다면 그 위치를 찾아내는 것**
 * **Brute Force법은 선형 검색을 확장한 알고리즘**
-  * 단순법, 소박법이라고도 함
+  * **단순법, 소박법**이라고도 함
   * 검사를 진행한 위치를 기억하지 못해 효율이 좋지 않음
 
 ```java
 public class BFmatch {
 	static int bfMatch(String txt, String pattern) {
-		int pText = 0;  // 원문 커서
+		int pText = 0;    // 원문 커서
 		int pPattern = 0; // 패턴 커서
 		
 		while(pText != txt.length() && pPattern != pattern.length()) {
@@ -32,7 +32,7 @@ public class BFmatch {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("String : ");
-		String str = sc.next(); // 원문 문자열
+		String str = sc.next();     // 원문 문자열
 		
 		System.out.print("Pattern : ");
 		String pattern = sc.next(); // 패턴용 문자열
@@ -43,6 +43,7 @@ public class BFmatch {
 		if (idx == -1) 
 			System.out.println("입력한 패턴이 없음");
 		else {
+			// 일치하는 문자 바로 앞까지의 길이를 구함
 			int len = 0;
 			for(int i=0; i<idx; i++) {
 				len += str.substring(i, i+1).getBytes().length;
