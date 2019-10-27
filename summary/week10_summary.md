@@ -18,11 +18,13 @@ public class BFmatch {
 				pText++;
 				pPattern++;
 			} else {
-				pText = pText - pPattern + 1;
+				pText = pText - pPattern + 1; // 비교했던 패턴만큼 롤백 후 오른쪽 이동
 				pPattern = 0;
 			}
 		}
 		
+		// while문에 끝났을 때 패턴 커서가 가리키는 위치와 패턴의 길이가 동일하다면
+		// 동일한 문자열을 찾았다는 의미
 		if (pPattern == pattern.length()) // 검색 성공
 			return pText - pPattern;
 		return -1; // 검색 실패
