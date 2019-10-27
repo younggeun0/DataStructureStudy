@@ -111,6 +111,29 @@ function solution(participant, completion) {
 ### minj0i
 
 ```JAVA
+import java.util.Arrays;
+
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+        boolean find = false;
+        
+        int i = 0;
+        for( ; i<completion.length; i++){
+            if(!participant[i].equals(completion[i]))  {
+                answer = participant[i];
+                find = true;
+                break;
+            }
+        }
+        if( !find ){
+            answer = participant[i];
+        }
+        return answer;
+    }
+}
 
 ```
 
