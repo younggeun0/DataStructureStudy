@@ -6,6 +6,25 @@
 
 ### younggeun0
 
+```java
+import java.util.*;
+
+class Solution {
+  public String solution(int a, int b) {
+      String answer = "";
+      
+      
+      Calendar cal = Calendar.getInstance();
+      cal.set(Calendar.YEAR, 2016); cal.set(Calendar.MONTH, a-1);
+      cal.set(Calendar.DAY_OF_MONTH, b);
+      
+      answer = "SUN,MON,TUE,WED,THU,FRI,SAT".split(",")[cal.get(Calendar.DAY_OF_WEEK)-1];
+      
+      return answer;
+  }
+}
+```
+
 ```javascript
 function solution(a, b) {
     var answer = '';
