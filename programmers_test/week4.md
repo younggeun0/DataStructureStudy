@@ -40,8 +40,16 @@ function solution(a, b) {
 ### younggeun0
 
 ```javascript
-
-
+function solution(participant, completion) {
+    participant.sort();
+    completion.sort();
+    
+    for(var i=0; i<participant.length; i++) {
+        if (participant[i] != completion[i]) {
+            return participant[i];
+        }
+    }
+}
 ```
 
 ### minj0i
