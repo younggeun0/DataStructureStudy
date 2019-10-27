@@ -43,7 +43,7 @@ public class BFmatch {
 		if (idx == -1) 
 			System.out.println("입력한 패턴이 없음");
 		else {
-			// 일치하는 문자 바로 앞까지의 길이를 구함
+			// 일치하는 문자 바로 앞까지의 길이를 구함(패턴 앞에 공백 주려고) - 생략가능한 
 			int len = 0;
 			for(int i=0; i<idx; i++) {
 				len += str.substring(i, i+1).getBytes().length;
