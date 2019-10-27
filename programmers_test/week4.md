@@ -1,8 +1,8 @@
 ## 프로그래머스 문제풀이 4
 
-* [2016년](https://programmers.co.kr/learn/courses/30/lessons/12901)
-
 ---
+
+* [2016년](https://programmers.co.kr/learn/courses/30/lessons/12901)
 
 ### younggeun0
 
@@ -33,9 +33,9 @@ function solution(a, b) {
 }
 ```
 
-* [완주하지 못한 선수](https://programmers.co.kr/learn/courses/30/lessons/42576)
-
 ---
+
+* [완주하지 못한 선수](https://programmers.co.kr/learn/courses/30/lessons/42576)
 
 ### younggeun0
 
