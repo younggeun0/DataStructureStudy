@@ -95,7 +95,7 @@ public class IntSet {
         if (num <= 0 || (idx = indexOf(n)) == -1) { // 비어있거나 n이 존재하지 않음
             return false;
         } else {
-            set[idx] = set[num-1]];  // 마지막 요소를 삭제한 곳으로 옮김
+            set[idx] = set[--num]];  // 마지막 요소를 삭제한 곳으로 옮김
             return true;
         }
     }
