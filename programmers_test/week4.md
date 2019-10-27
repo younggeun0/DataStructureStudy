@@ -5,14 +5,23 @@
 ### younggeun0
 
 ```javascript
-
+function solution(a, b) {
+    var answer = '';
+    
+    var day = [ 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI' ,'SAT' ];
+    
+    var dateInstance = new Date("2016-"+a+"-"+b);
+    answer = day[dateInstance.getDay()];
+    
+    
+    return answer;
+}
 ```
 
 ### minj0i
 
 ```JAVA
 
-}
 ```
 
 ### sgmsgood
