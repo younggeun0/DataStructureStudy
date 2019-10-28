@@ -24,7 +24,7 @@
   * [9주차 - 정렬(3/3) 병합, 힙, 도수 정렬(by sgmsgood)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week9_summary_mergesort.md)
   * [10주차 - 집합 (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week9_summary.md)
   * [11주차 - 문자열 검색 (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week10_summary.md)
-  * 12주자 - 리스트(1/2) (by minj0i)
+  * [12주자 - 리스트(1/2) (by minj0i)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week12_summary.md)
   * 13주차 - 리스트(2/2) (by sgmsgood)
   * 14주차 - 트리(1/2) (by younggeun0)
   * 15주차 - 트리(2/2) (by minj0i)
