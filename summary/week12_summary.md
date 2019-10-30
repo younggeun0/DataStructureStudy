@@ -99,22 +99,39 @@ public class LinkedList<E> {
 ```JAVA
 	// 노드 검색
 	public E search(E obj, Comparator<? super E> c) {
-		Node<E> ptr = head; // 현재 스캔중인  노드
+		Node<E> ptr = head; // 현재 스캔중인  노드, head로 초기화
 
-		while (ptr != null) {
-			if (c.compare(obj, ptr.data) == 0) { // 검색 성공
+		while (ptr != null) { //조건 1 판단
+			if (c.compare(obj, ptr.data) == 0) { // 조건 2 판단, 검색 성공
 				crnt = ptr;
 				return ptr.data;
 			}
 			ptr = ptr.next; // 다음 노드를 선택
 		}
-		return null; // 검색 실패
+		return null; // 검색 실패 시 null 반환
 	}
+```
+- 검색을 수행하는 search 메서드
+	- 종료 조건 1: 검색 조건을 만족하는 노드를 찾지 못하고 꼬리 노드를 지나가기 직전인 경우
+	- 종료 조건 2: 검색 조건을 만족하는 노드를 찾은 경우
+	- 이 메소드가 전달받는 매개 변수는
+		- 첫 번째 매개변수 obj: 검색할 때 key가 되는 데이터를 넣어둔 object
+		- 두 번째 매개변수 c: 첫 번째 매개변수와 연결 리스트의 개별 노드 안에 있는 데이터를 비교하기 위한 comparator, comparator c에 의해 obj와 선택한 노드의 데이터를 비교하여 그 결과가 0이면 검색 조건이 성립하는 것으로 봄
 
+- 머리에 노드를 삽입하는 addFirst 메서드
+	- 노드의 데이터는 obj가 되고, 뒤쪽 포인터가 가리키는 곳은 ptr(삽입 전의 머리 노드)
+	- 생성한 노드를 참조하도록 head를 업데이트
+
+- 꼬리에 노드를 삽입하는 addLast 메서드
+	- 먼저 리스트가 비어있는지(head==null) 먼저 확인 하고 다음 작업 실행
+	1. 리스트가 비어있는 경우: 머리에 노드 삽입
+	2. 리스트가 비어있지 않은 경우: 리스트 꼬리에 마지막 노드 삽입
+
+```JAVA
 	// 머리에 노드 삽입
 	public void addFirst(E obj) {
 		Node<E> ptr = head; // 삽입 전의 머리 노드
-		head = crnt = new Node<E>(obj, ptr);
+		head = crnt = new Node<E>(obj, ptr); //생성 노드 참조하도록 업데이트
 	}
 
 	// 꼬리에 노드 삽입
@@ -123,12 +140,21 @@ public class LinkedList<E> {
 			addFirst(obj); // 머리에 삽입
 		else {
 			Node<E> ptr = head;
-			while (ptr.next != null)
+			while (ptr.next != null) //while문 종료시, ptr은 꼬리 노드를 가리킴
 				ptr = ptr.next;
 			ptr.next = crnt = new Node<E>(obj, null);
 		}
 	}
+	```
+- 머리 노드를 삭제하는 removeFirst 메서드
+	- 리스트가 비어있지 않은 경우 (head!=null)에서만 삭제 실행
 
+- 꼬리 노드를 삭제하는 removeLast 메서드
+	1. 리스트에 노드가 1개만 있는 경우: 머리 노드를 삭제하는 작업. removeFirst메서드로 처리
+	2. 2개이상 있는 경우: while문, 스캔 중인 노드의 앞쪽 노드를 참조하는 변수 pre가 추가된 것을 활용
+
+
+```JAVA
 	// 머리 노드 삭제
 	public void removeFirst() {
 		if (head != null) // 리스트가 비어 있지 않으면
@@ -153,7 +179,15 @@ public class LinkedList<E> {
 			}
 		}
 	}
+```
 
+- 선택한 노드를 삭제하는 remove 메서드
+	1. p가 머리 노드인 경우 : 머리노드를 삭제, removeFirst 메서드로 처리
+	2. p가 머리 노드가 아닌 경우: ptr.next가 p와 같을때까지 반복, null을 만나면 p가 참조하는 노드가 없다는 것. 삭제 처리를 하지 않고 반환에 의해 메서드 실행을 마침. while문 종료된 후 ptr이 참조하는 곳은 삭제할 노드 D의 앞쪽 노드.<br/>
+	삭제 대상 노드의 뒤쪽 포인터 p.next를 삭제 대상 노드의 앞 노드 뒤쪽 포인터에 대입하여 뒤 노드로 이어줌.<br/>
+	참조하지 않는 노드의 메모리는 자동으로 해제 
+
+```JAVA
 	// 노드 p를 삭제
 	public void remove(Node p) {
 		if (head != null) {
@@ -191,7 +225,18 @@ public class LinkedList<E> {
 		crnt = crnt.next;
 		return true;
 	}
+```
 
+- 선택 노드를 삭제하는 removeCurrentNode 메서드
+	- remove 메서드에 crnt를 건네주고 처리를 맡김
+
+- 모든 노드를 삭제하는 clear 메서드
+	- 연결 리스트가 비어 있는 상태까지 머리요소의 삭제를 반복하여 모든 노드 삭제
+
+- 선택 노드를 하나 뒤쪽으로 이동하는 next 메서드
+	- 선택 노드를 하나 뒤쪽으로 이동하는 메서드. 선택노드가 이동하면 true 반환
+
+```JAVA
 	// 선택 노드를 출력
 	public void printCurrentNode() {
 		if (crnt == null)
@@ -211,3 +256,9 @@ public class LinkedList<E> {
 	}
 }
 ```
+
+- 선택 노드를 표시하는 printCurrentNode 메서드
+	- 선택 노드를 표시. crnt가 참조하는 노드의 데이터를 crnt.data를 표시
+
+- 모든 노드를 표시하는 dump
+	- 머리 노드부터 꼬리 노드까지 스캔하면서 ptr.data 표시
