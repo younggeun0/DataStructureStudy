@@ -1,4 +1,4 @@
-package week12;
+package list_study;
 import java.util.Comparator;
 
 public class LinkedList<E> {
@@ -92,6 +92,10 @@ public class LinkedList<E> {
                 current = p;
             }
         }
+    }
+    
+    public void removeCurrentNode() {
+    	remove(current);
     }
 
     public void clear() {
