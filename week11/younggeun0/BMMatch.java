@@ -16,7 +16,6 @@ public class BMMatch {
 		for(pText = 0; pText <= Character.MAX_VALUE; pText++) {
 			skip[pText] = patternLength;
 		}
-		
 		for(pText = 0; pText < patternLength-1; pText++) {
 			skip[pattern.charAt(pText)] = patternLength - pText - 1; // pText == patternLength - 1
 		}
@@ -65,5 +64,4 @@ public class BMMatch {
 			System.out.printf(String.format("ÆÐÅÏ : %%%ds\n", len), pattern);
 		}
 	}
-
 }
