@@ -33,7 +33,7 @@ public class BMMatch {
 				pPattern--;
 				pText--;
 			}
-			pText = (skip[txt.charAt(pText)] > patternLength - pPattern) ?
+			pText += (skip[txt.charAt(pText)] > patternLength - pPattern) ?
 					skip[txt.charAt(pText)] : patternLength - pPattern;
 		}
 		return -1;

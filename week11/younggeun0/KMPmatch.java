@@ -63,5 +63,4 @@ public class KMPmatch {
 			System.out.printf(String.format("фпео : %%%ds\n", len), pattern);
 		}
 	}
-
 }
