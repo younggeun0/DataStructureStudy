@@ -130,9 +130,9 @@ static int kmpMatch(String txt, String pattern) {
       * 착한접미사와 일치하는 문자열이 없으면 착한 접미사의 문자열을 왼쪽부터 하나씩 줄여나가면서 반복 조사
         * 완전 불일치의 경우, 패턴의 길이만큼 이동한 후 비교
 
-![bad-character]()
+![bad-character](https://github.com/younggeun0/DataStructureStudy/blob/master/week12/younggeun0/img/bad-character.jpg?raw=true)
 
-![good-suffix]()
+![good-suffix](https://github.com/younggeun0/DataStructureStudy/blob/master/week12/younggeun0/img/good-suffix.jpg?raw=true)
 
 * **패턴의 마지막 문자부터 앞쪽으로 검사를 진행하면서 일치하지 않는 문자가 있으면 미리 준비한 표에 따라 패턴을 옮길 크기를 정함**
   * **텍스트안에서 패턴이 들어 있지 않으면 패턴의 길이만큼 건너 뜀**
