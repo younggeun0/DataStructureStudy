@@ -63,18 +63,19 @@ public class BFmatch {
 * [String.indexOf](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
   * java.lang패키지 String클래스에서 제공하는 오버로딩된 여러 indexOf를 사용하면 쉽게 문자열 검색 결과를 얻을 수 있음
 
-## 2. KMP
+## 2. KMP(Knuth-Morris-Pratt, 크누스 모리스 프랫)
 
 * Brute Force와는 다르게 검사했던 위치 결과를 버리지 않고 이를 효율적으로 사용하는 알고리즘
   * 'apple' 패턴을 찾을 때 'app'까지 맞고 안맞다면 다음 'app'이 존재하는 곳으로 이동 후 'l'('app' 이후)부터 비교하는 방법
-* **텍스트와 패턴이 겹치는 부분을 찾아내 검사를 다시 시작할 위치를 구함**
   * 하지만 몇 번째 문자부터 다시 검색을 시작할지 패턴을 이동시킬때마다 계산하므로 효율은 높지 않음
-    * 그래서 **몇 번째 문자부터 다시 검색할지에 대한 값을 미리 표로 만들어서 해결**
-    * 표를 작성할 때는 패턴 안에 중복되는 문자의 나열을 먼저 찾음, 이 과정에서 KMP법을 사용
+* **텍스트와 패턴이 겹치는 부분을 찾아내 검사를 다시 시작할 위치를 표로 구함**
+  * 표는 접두사가 일치하는 최대 길이를 저장한 것, 검색 중 일치하지 않으면 이 표를 이용하여 점프
 * KMP법에서 텍스트를 스캔하는 커서 pText는 다시 뒤로 돌아오지 않음
   * 하지만 Brute Force보다 복잡하고 Boyer-Moore보다 성능이 같거나 좋지 않아 실제로 많이 안쓰임
 
 ```java
+// * text : abcabd, pattern : abd일 때 skip[abcabd.length()] = { -, 0, 0, 0, 1, 2 }
+
 static int kmpMatch(String txt, String pattern) {
 	int pText = 1;    // 원문 커서
 	int pPattern = 0; // 패턴 커서
@@ -90,7 +91,7 @@ static int kmpMatch(String txt, String pattern) {
 		else
 			pPattern = skip[pPattern];
 	} 
-    ////////////////////////////////
+        ////////////////////////////////
 	
 	// 검색 ////////////////////////
 	pText = pPattern = 0;
@@ -104,9 +105,9 @@ static int kmpMatch(String txt, String pattern) {
 			pPattern = skip[pPattern];
 		}
 	}
-    ////////////////////////////////
+        ////////////////////////////////
 	
-	if (pPattern == pattern.length()) // pText - pPattern을 반환
+	if (pPattern == pattern.length()) // pText - pPattern을 반환(검색되면 0)
 		return pText - pPattern;
 	return -1; // 검색 실패
 }
@@ -117,7 +118,23 @@ static int kmpMatch(String txt, String pattern) {
 
 * Brute-Force를 개선한 KMP보다 효율이 더 우수하여 실제 문자열 검색에 널리 사용하는 알고리즘
 * R.S Boyer와 J.S.Moore가 만들어서 Boyer-Moore법이라 불림
-* 패턴의 마지막 문자부터 앞쪽으로 검사를 진행하면서 일치하지 않는 문자가 있으면 미리 준비한 표에 따라 패턴을 옮길 크기를 정함
+  * 현재 대부분 워드프로세스 "검색" 기능에서 사용되고 있음
+* 문자열 패턴과 문자열을 비교 시 문자열의 가장 뒷부분 위치를 비교, 다르면 일정 길이만큼 이동하여 비교를 계속하는 기법
+  * **Good Suffix Method(착한 접미사 이동)와 Bad Character Method(나쁜문자 이동) 활용**
+    * **Bad Character Shift 방식**
+      * 본문의 문자열과 패턴이 불일치하도록 만드는 문자(나쁜문자) 발견, 패턴의 나쁜문자와 본문 문자열의 나쁜 문자 위치를 일치하도록 패턴 이동
+      * 문자열에서 찾은 나쁜문자 위치보다 패턴에 존재하는 동일 문자위치가 뒤 쪽인 경우 활용 불가 => 착한 접미사 이동 사용
+    * **Good Suffix Shift 방식**
+      * 오른쪽에서 왼쪽으로 패턴과 문자열이 일치하는 것을 불일치 할때까지 찾음, 패턴에서 착한 접미사와 일치하는 문장을 이동
+      * 착한접미사와 일치하는 문자열이 있으면 패턴에서 착한접미사와 일치하는 부분을 착한접미사에 일치하게 이동
+      * 착한접미사와 일치하는 문자열이 없으면 착한 접미사의 문자열을 왼쪽부터 하나씩 줄여나가면서 반복 조사
+        * 완전 불일치의 경우, 패턴의 길이만큼 이동한 후 비교
+
+![bad-character]()
+
+![good-suffix]()
+
+* **패턴의 마지막 문자부터 앞쪽으로 검사를 진행하면서 일치하지 않는 문자가 있으면 미리 준비한 표에 따라 패턴을 옮길 크기를 정함**
   * **텍스트안에서 패턴이 들어 있지 않으면 패턴의 길이만큼 건너 뜀**
 * Boyer-Moore 알고리즘도 각각의 문자를 만났을 때 패턴을 옮길 크기를 저장할 표(건너뛰기 표)를 미리 만듦
 * 패턴에 들어 있지 않은 문자를 만난 경우, 패턴을 옮길 크기는 n
@@ -128,7 +145,7 @@ static int kmpMatch(String txt, String pattern) {
 ```java
 static int bmMatch(String txt, String pattern) {
 	int pText; 		// txt 커서
-	int pPattern;	// pattern 커서
+	int pPattern;	        // pattern 커서
 	int txtLength = txt.length();
 	int patternLength = pattern.length();
 	
@@ -155,7 +172,7 @@ static int bmMatch(String txt, String pattern) {
 			pPattern--;
 			pText--;
 		}
-		pText = (skip[txt.charAt(pText)] > patternLength - pPattern) ?
+		pText += (skip[txt.charAt(pText)] > patternLength - pPattern) ?
 				skip[txt.charAt(pText)] : patternLength - pPattern;
 	}
 	return -1;
