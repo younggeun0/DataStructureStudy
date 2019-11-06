@@ -3,7 +3,7 @@
 
 ### 트리란?
 
-![tree_jpeg]()
+![tree_jpeg](https://github.com/younggeun0/DataStructureStudy/blob/master/week14/younggeun0/img/tree.jpeg?raw=true)
 
 * 트리는 데이터 사이의 계층 관계를 나타내는 자료구조
 * **노드(node)와 가지(edge)**
@@ -31,7 +31,7 @@
 
 ### 순서 트리 탐색
 
-![bfs-dfs_png]()
+![bfs-dfs_png](https://github.com/younggeun0/DataStructureStudy/blob/master/week14/younggeun0/img/bfs-dfs.png?raw=true)
 
 * 순서 트리의 노드를 스캔하는 방법은 두가지
   * **너비 우선 탐색(Breadth-First Search, BFS)**
