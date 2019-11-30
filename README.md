@@ -27,7 +27,7 @@
   * [12주자 - 리스트(1/2) (by minj0i)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week12_summary.md)
   * 13주차 - 리스트(2/2) (by sgmsgood)
   * [14주차 - 트리(1/2) (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week14_summary.md)
-  * 15주차 - 트리(2/2) (by minj0i)
+  * 15주차 - 트리(2/2) (by minj0i)(https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week15_summary.md)
   * 16주차 - 해시 (by sgmsgood)
 * **문제풀이**
   * [1주차](https://github.com/younggeun0/DataStructureStudy/blob/master/programmers_test/week1.md)
