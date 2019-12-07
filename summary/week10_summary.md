@@ -125,7 +125,8 @@ static int kmpMatch(String txt, String pattern) {
 * **패턴의 마지막 문자부터 앞쪽으로 검사를 진행하면서 일치하지 않는 문자가 있으면 미리 준비한 표에 따라 패턴을 옮길 크기를 정함**
 1. **패턴에 들어 있지 않은 문자를 만난 경우, 패턴을 옮길 크기는 n**
 2. **패턴에 들어 있는 문자를 만난 경우, 마지막에 나오는 위치의 인덱스가 k이면 패턴을 옮길 크기는 n-k-1**
-* 아래는 하나의 배열만 사용해서 검사하는 Boyer-Moore 알고리즘(원래 두개의 배열로 문자열을 검사)
+* 아래는 하나의 배열만 사용해서 검사하는 간단하게 구현된 Boyer-Moore 알고리즘(원래 두개의 배열로 문자열을 검사)
+  * * Boyer-Moore법을 사용할 때 패턴에 존재할 수 있는 모든 문자열의 옮길 크기를 계싼하고 저장해야 하기 떄문에 건너뛰기 표의 요소 개수는 Character.MAX_Value+1
 
 ```java
 static int bmMatch(String txt, String pattern) {
@@ -136,12 +137,14 @@ static int bmMatch(String txt, String pattern) {
 	
 	int[] skip = new int[Character.MAX_VALUE+1]; // 건너뛰기 표
 	
-	// 건너뛰기 표 생성
+	// 건너뛰기 표 생성(일단 패턴의 길이만큼 건너뛰기 표 값을 초기화)
 	for(pText = 0; pText <= Character.MAX_VALUE; pText++) {
-		skip[pText] = patternLength;
+		skip[pText] = patternLength; 
 	}
 	
 	for(pText = 0; pText < patternLength-1; pText++) {
+		// 패턴이 들어있는 문자를 만난 경우 
+		// 마지막에 나오는 위치의 인덱스가 pText이면 패턴을 옮길 크기는 패턴의 길이 - pText - 1
 		skip[pattern.charAt(pText)] = patternLength - pText - 1; // pText == patternLength - 1
 	}
 	
@@ -149,7 +152,7 @@ static int bmMatch(String txt, String pattern) {
 	while(pText < txtLength) {
 		pPattern = patternLength - 1; // pattern의 끝 문자에 주목
 		
-		while (txt.charAt(pText) == pattern.charAt(pPattern)) {
+		while (txt.charAt(pText) == pattern.charAt(pPattern)) { // 패턴 끝문자가 같은지 확인
 			if (pPattern == 0) {
 				return pText; // 검색 성공
 			}
@@ -157,6 +160,7 @@ static int bmMatch(String txt, String pattern) {
 			pPattern--;
 			pText--;
 		}
+		// 패턴 끝비교가 다를 경우 건너뛰기 표를 사용해서 비교할 텍스트 커서 이동
 		pText += (skip[txt.charAt(pText)] > patternLength - pPattern) ?
 				skip[txt.charAt(pText)] : patternLength - pPattern;
 	}
