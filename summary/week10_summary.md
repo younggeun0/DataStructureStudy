@@ -27,7 +27,9 @@ public class BFmatch {
 		// while문에 끝났을 때 패턴 커서가 가리키는 위치+1(탐색이 끝나 ++된 후)과 패턴의 길이가 동일하다면
 		// 동일한 문자열을 찾았다는 의미
 		if (pPattern == pattern.length()) // 검색 성공
-			return pText - pPattern; // 텍스트에 패턴이 여러 개 있는 경우 가장 앞쪽에 위치한 텍스트의 인덱스를 반환
+			// 탐색이 끝난 후 pText에서 pPattern일 빼면 패턴이 시작되는 첫 번째 인덱스가 
+			return pText - pPattern;
+			// 텍스트에 패턴이 여러 개 있는 경우 가장 앞쪽에 위치한 텍스트의 인덱스를 반환
 		return -1; // 검색 실패
 	}
 	
