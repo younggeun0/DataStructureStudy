@@ -119,28 +119,12 @@ static int kmpMatch(String txt, String pattern) {
 ## 3. Boyer-Moore
 
 * Brute-Force를 개선한 KMP보다 효율이 더 우수하여 실제 문자열 검색에 널리 사용하는 알고리즘
-* R.S Boyer와 J.S.Moore가 만들어서 Boyer-Moore법이라 불림
+* **R.S Boyer와 J.S.Moore가 만들어서 Boyer-Moore법이라 불림**
   * 현재 대부분 워드프로세스 "검색" 기능에서 사용되고 있음
-* 문자열 패턴과 문자열을 비교 시 문자열의 가장 뒷부분 위치를 비교, 다르면 일정 길이만큼 이동하여 비교를 계속하는 기법
-  * **Good Suffix Method(착한 접미사 이동)와 Bad Character Method(나쁜문자 이동) 활용**
-    * **Bad Character Shift 방식**
-      * 본문의 문자열과 패턴이 불일치하도록 만드는 문자(나쁜문자) 발견, 패턴의 나쁜문자와 본문 문자열의 나쁜 문자 위치를 일치하도록 패턴 이동
-      * 문자열에서 찾은 나쁜문자 위치보다 패턴에 존재하는 동일 문자위치가 뒤 쪽인 경우 활용 불가 => 착한 접미사 이동 사용
-    * **Good Suffix Shift 방식**
-      * 오른쪽에서 왼쪽으로 패턴과 문자열이 일치하는 것을 불일치 할때까지 찾음, 패턴에서 착한 접미사와 일치하는 문장을 이동
-      * 착한접미사와 일치하는 문자열이 있으면 패턴에서 착한접미사와 일치하는 부분을 착한접미사에 일치하게 이동
-      * 착한접미사와 일치하는 문자열이 없으면 착한 접미사의 문자열을 왼쪽부터 하나씩 줄여나가면서 반복 조사
-        * 완전 불일치의 경우, 패턴의 길이만큼 이동한 후 비교
-
-![bad-character](https://github.com/younggeun0/DataStructureStudy/blob/master/week12/younggeun0/img/bad-character.jpg?raw=true)
-
-![good-suffix](https://github.com/younggeun0/DataStructureStudy/blob/master/week12/younggeun0/img/good-suffix.jpg?raw=true)
-
+  * Boyer-Moore 알고리즘도 각각의 문자를 만났을 때 패턴을 옮길 크기를 저장할 표(건너뛰기 표)를 미리 만듦
 * **패턴의 마지막 문자부터 앞쪽으로 검사를 진행하면서 일치하지 않는 문자가 있으면 미리 준비한 표에 따라 패턴을 옮길 크기를 정함**
-  * **텍스트안에서 패턴이 들어 있지 않으면 패턴의 길이만큼 건너 뜀**
-* Boyer-Moore 알고리즘도 각각의 문자를 만났을 때 패턴을 옮길 크기를 저장할 표(건너뛰기 표)를 미리 만듦
-* 패턴에 들어 있지 않은 문자를 만난 경우, 패턴을 옮길 크기는 n
-* 패턴에 들어 있는 문자를 만난 경우, 마지막에 나오는 위치의 인덱스가 k이면 패턴을 옮길 크기는 n-k-1
+1. **패턴에 들어 있지 않은 문자를 만난 경우, 패턴을 옮길 크기는 n**
+2. **패턴에 들어 있는 문자를 만난 경우, 마지막에 나오는 위치의 인덱스가 k이면 패턴을 옮길 크기는 n-k-1**
   * 같은 문자가 패턴 안에서 중복해서 들어 있지 않다면 패턴을 옮길 크기는 n
 * 아래는 하나의 배열만 사용해서 검사하는 Boyer-Moore 알고리즘(원래 두개의 배열로 문자열을 검사)
 
