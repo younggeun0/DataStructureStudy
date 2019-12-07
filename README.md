@@ -25,7 +25,7 @@
   * [10주차 - 집합 (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week9_summary.md)
   * [11주차 - 문자열 검색 (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week10_summary.md)
   * [12주자 - 리스트(1/2) (by minj0i)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week12_summary.md)
-  * 13주차 - 리스트(2/2) (by sgmsgood)
+  * [13주차 - 리스트(2/2) (by sgmsgood)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week11_summary.md)
   * [14주차 - 트리(1/2) (by younggeun0)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week14_summary.md)
   * [15주차 - 트리(2/2) (by minj0i)](https://github.com/younggeun0/DataStructureStudy/blob/master/summary/week15_summary.md)
   * 16주차 - 해시 (by sgmsgood)
