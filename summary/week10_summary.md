@@ -6,7 +6,6 @@
 * **Brute Force법은 선형 검색을 확장한 알고리즘**
   * **단순법, 소박법**이라고도 함
   * 검사를 진행한 위치를 기억하지 못해 효율이 좋지 않음
-    * 3단어의 패턴을 검사한다면 1단어 일치 확인, 1\~2단어 일치 확인, 1\~3단어 일치 확인을 수행(비효율적)
 
 ```java
 public class BFmatch {
@@ -64,7 +63,7 @@ public class BFmatch {
 ```
 
 * [String.indexOf](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
-  * java.lang패키지 String클래스에서 제공하는 오버로딩된 여러 indexOf를 사용하면 쉽게 문자열 검색 결과를 얻을 수 있음
+  * java.lang패키지 String클래스에서 제공하는 오버로딩된 여러 **indexOf 메서드**를 사용하면 쉽게 문자열 검색 결과를 얻을 수 있음
 
 ## 2. KMP(Knuth-Morris-Pratt, 크누스 모리스 프랫)
 
@@ -72,19 +71,19 @@ public class BFmatch {
   * 'apple' 패턴을 찾을 때 'app'까지 맞고 안맞다면 다음 'app'이 존재하는 곳으로 이동 후 'l'('app' 이후)부터 비교하는 방법
   * 하지만 몇 번째 문자부터 다시 검색을 시작할지 패턴을 이동시킬때마다 계산하므로 효율은 높지 않음
 * **텍스트와 패턴이 겹치는 부분을 찾아내 검사를 다시 시작할 위치를 표로 구함**
-  * 표는 접두사가 일치하는 최대 길이를 저장한 것, 검색 중 일치하지 않으면 이 표를 이용하여 점프
+  * **패턴 안에서 중복되는 문자의 나열을 먼저 찾아 건너뛰는 표를 만들어 사용**
+    * 예) text : abcabd, pattern : abd일 때 skip[abcabd.length()] = { -, 0, 0, 0, 1, 2 }
+  * **건너 뛰기 표에 값은 패턴이 비교를 시작하는 인덱스**
 * KMP법에서 텍스트를 스캔하는 커서 pText는 다시 뒤로 돌아오지 않음
   * 하지만 Brute Force보다 복잡하고 Boyer-Moore보다 성능이 같거나 좋지 않아 실제로 많이 안쓰임
 
 ```java
-// * text : abcabd, pattern : abd일 때 skip[abcabd.length()] = { -, 0, 0, 0, 1, 2 }
-
 static int kmpMatch(String txt, String pattern) {
 	int pText = 1;    // 원문 커서
 	int pPattern = 0; // 패턴 커서
 	int[] skip = new int[pattern.length() + 1]; // 건너뛰기 표
 	
-	// 건너뛰기 표 만들기 //////////
+	// 패턴을 이용하여 건너뛰기 표 만들기 //////////
 	skip[pText] = 0;
 	while(pText != pattern.length()) {
 		if (pattern.charAt(pText) == pattern.charAt(pPattern))
