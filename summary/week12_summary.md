@@ -77,6 +77,7 @@ public class LinkedList<E> {
 		head = crnt = null;
 	}
 ```
+
 - 생성자 LinkedList
     - 변수 head에 null을 대입 => 노드가 하나도 없는 비어 있는 연결 리스트가 생성됨
     - 변수 head가 머리 노드에 대한 참조일 뿐 머리 노드 그 자체는 아님!
@@ -146,7 +147,8 @@ public class LinkedList<E> {
 			ptr.next = crnt = new Node<E>(obj, null);
 		}
 	}
-	```
+```
+
 - 머리 노드를 삭제하는 removeFirst 메서드
 	- 리스트가 비어있지 않은 경우 (head!=null)에서만 삭제 실행
 
